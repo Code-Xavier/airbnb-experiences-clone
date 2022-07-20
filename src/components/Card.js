@@ -2,30 +2,30 @@
 import star from "../images/star.svg";
 // import data from "../data";
 
-function Card({
-  id,
-  title,
-  description,
-  price,
-  coverImg,
-  stats,
-  location,
-  openSpots,
-}) {
+function Card(props) {
+
+  let badgeText 
+  if (props.openSpots === 0) {
+    badgeText = "Sold Out";
+  } else if (props.location === "Online") {
+    badgeText = "ONLINE";
+  }
+
   return (
     <section className="card" >
       <div className="card-section card-section-left">
-      <img className="cards-image" alt="logo" src={coverImg} />
+        {badgeText && <div className="card-badge">{badgeText}</div>}
+      <img className="cards-image" alt="logo" src={props.coverImg} />
       <div className="card-stats">
         <p>
           <img src={star} alt="logo" className="card-star" />
-          {/* <span>{stats.rating}</span>
-          <span>{stats.reviewCount}</span> */}
-          • <span>{location}</span>
+          <span>{props.stats.rating}</span>
+          <span>{props.stats.reviewCount}</span>
+          • <span>{props.location}</span>
         </p>
-        <p>{title}</p>
+        <p>{props.title}</p>
         <p>
-          <strong>${price}</strong>/person
+          <strong>${props.price}</strong>/person
         </p>
       </div>
       </div>
@@ -36,13 +36,3 @@ function Card({
 
 export default Card;
 
-/* <img className="cards-image" alt="logo" src={props.img} />
-      <div className="card-stats">
-        <p>
-          <img src={props.star} alt="logo" className="card-star"/>
-          <span>{props.rating}</span>
-          <span>{props.reviewCount}</span>  • <span>{props.country}</span> 
-        </p>
-        <p>{props.title}</p>
-        <p><strong>${props.price}</strong>/person</p>
-      </div> */

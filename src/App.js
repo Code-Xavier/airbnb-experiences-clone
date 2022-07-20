@@ -7,14 +7,22 @@ import data from "./data";
 
 
 const cards = data.map(card => {
+
+  // const card = {
+  //   coverImg: {card.coverImg},
+  //     location: {card.location},
+  //     rating: {card.stats.rating},
+  //     reviewCount: {card.stats.reviewCount},
+  //     title: {card.title},
+  //     price: {card.price},
+  //     openSpots: {card.openSpots}
+  // }
+
   return (
     <Card
-      coverImg={card.coverImg}
-      location={card.location}
-      rating={card.stats.rating}
-      reviewCount={card.stats.reviewCount}
-      title={card.title}
-      price={card.price}
+      key={card.id}
+      // card={card} needs .card in Card.js
+      {...card} //remove .card in Card.js
     />
   );
 });
